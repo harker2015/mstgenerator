@@ -1,0 +1,9 @@
+server:
+  port: 8082
+
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+filePath: D:\\tmp\\generatedCode
