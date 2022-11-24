@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -29,12 +31,18 @@ public class GeneratorServiceImpl implements GeneratorService {
     public void generate(ProjectInfo projectInfo) {
         logger.info("Generate begin!");
 
-        Map<String, Object> map = new HashMap<>();
-        map.put("title", "hello world");
-        map.put("title2", "xiao ming");
+        Map<String, Object> params = new HashMap<>();
+
+        List<String> users = new ArrayList<>();
+        users.add("Joe");
+        users.add("Kate");
+        users.add("Fred");
+
+        params.put("users", users);
+
 
         try {
-            String result = freemarkerUtil.processString("test.ftl", map);
+            String result = freemarkerUtil.processString("test.ftl", params);
             logger.info("result:" + result);
             FileUtils.write(new File(filePath + "/test.java"), result, StandardCharsets.UTF_8, false);
         } catch (Exception e) {

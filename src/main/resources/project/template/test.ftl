@@ -1,2 +1,3 @@
-This is ${title}
-That is ${title2}
+<#list users as user>
+    <p>${user}
+</#list>
